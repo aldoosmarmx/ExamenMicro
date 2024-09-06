@@ -1,0 +1,51 @@
+openapi: 2.0.0
+info:
+  title: API de Clientes
+  version: 1.0.0
+paths:
+  /clientes:
+    post:
+      summary: Crear un nuevo cliente
+      parameters:
+        - in: body
+          name: cliente
+          description: Datos del cliente
+          required: true
+          schema:
+            $ref: '#/definitions/Cliente'
+      responses:
+        200:
+          description: Cliente creado con éxito
+          schema:
+            type: integer
+    get:
+      summary: Obtener un cliente por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Datos del cliente
+          schema:
+            $ref: '#/definitions/Cliente'
+definitions:
+  Cliente:
+    type: object
+    properties:
+      nombre:
+        type: string
+      apellidoPaterno:
+        type: string
+      apellidoMaterno:
+        type: string
+      fechaNacimiento:
+        type: string
+        format: date
+      sexo:
+        type: string
+      correo:
+        type: string
+      telefono:
+        type: string
